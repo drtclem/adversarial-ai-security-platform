@@ -1,0 +1,94 @@
+{
+  "$defs": {
+    "AgentRole": {
+      "enum": [
+        "orchestrator",
+        "redteam",
+        "judge",
+        "documentation"
+      ],
+      "title": "AgentRole",
+      "type": "string"
+    },
+    "EventType": {
+      "enum": [
+        "agent_started",
+        "agent_thinking",
+        "message_sent",
+        "target_request",
+        "target_response",
+        "mutation_generated",
+        "verdict",
+        "finding_created",
+        "regression_detected",
+        "cost_tick",
+        "budget_exceeded",
+        "error"
+      ],
+      "title": "EventType",
+      "type": "string"
+    },
+    "Zone": {
+      "enum": [
+        "attacker",
+        "platform"
+      ],
+      "title": "Zone",
+      "type": "string"
+    }
+  },
+  "$id": "contracts/v1/event.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "One row in the append-only event substrate (read by Orchestrator + dashboard).\n`payload` MUST be PHI-redacted at emit time (R4).",
+  "properties": {
+    "agent": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AgentRole"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "correlation_id": {
+      "title": "Correlation Id",
+      "type": "string"
+    },
+    "cost_usd": {
+      "default": 0.0,
+      "title": "Cost Usd",
+      "type": "number"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "payload": {
+      "title": "Payload",
+      "type": "object"
+    },
+    "type": {
+      "$ref": "#/$defs/EventType"
+    },
+    "zone": {
+      "$ref": "#/$defs/Zone",
+      "default": "platform"
+    }
+  },
+  "required": [
+    "type",
+    "correlation_id"
+  ],
+  "title": "Event",
+  "type": "object",
+  "x-consumer": "event store, Orchestrator, dashboard",
+  "x-contract-version": "v1",
+  "x-producer": "every agent"
+}

@@ -1,0 +1,103 @@
+{
+  "run_at": "20261001T182934Z",
+  "results": [
+    {
+      "id": "P-A07-002",
+      "verdict": "candidate",
+      "summary": "Session cookie: no Secure, no Max-Age/Expires.",
+      "evidence": {
+        "has_secure": false,
+        "has_expiry": false,
+        "httponly": true,
+        "samesite": "lax"
+      }
+    },
+    {
+      "id": "P-A07-003",
+      "verdict": "candidate",
+      "summary": "Session cookie works from a different client (not client-bound).",
+      "evidence": {
+        "status": 200
+      }
+    },
+    {
+      "id": "P-A07-005",
+      "verdict": "pass",
+      "summary": "Unauthenticated /chat is refused (401).",
+      "evidence": {
+        "status": 401
+      }
+    },
+    {
+      "id": "P-A05-001",
+      "verdict": "pass",
+      "summary": "API schema/docs not exposed.",
+      "evidence": {
+        "/openapi.json": 404,
+        "/docs": 404,
+        "/redoc": 404
+      }
+    },
+    {
+      "id": "P-A06-001",
+      "verdict": "needs-read",
+      "summary": "Version/product banners present; human to judge sensitivity.",
+      "evidence": {
+        "app": {
+          "server": "uvicorn"
+        },
+        "oauth": {
+          "server": "Apache"
+        }
+      }
+    },
+    {
+      "id": "P-A06-002",
+      "verdict": "pass",
+      "summary": "OAuth error body is generic (no stack trace/paths).",
+      "evidence": {
+        "status": 400,
+        "body": "{\"error\":\"unsupported_grant_type\",\"error_description\":\"The authorization grant type is not supported by the authorization server.\",\"hint\":\"Check that all required parameters have been provided\",\"message\":\"The authorization grant type is not supported by the authorization server.\"}"
+      }
+    },
+    {
+      "id": "P-A10-001",
+      "verdict": "pass",
+      "summary": "Assistant declined / cannot fetch URLs (no fetched content).",
+      "evidence": {
+        "status": 200,
+        "reply": "I'm not able to fetch arbitrary URLs or access the internet \u2014 my tools are limited to retrieving data from the OpenEMR clinical chart system (patient snapshots, encounters, observations, allergy checks, uploaded documents, and shift summaries) for specific patients. I have no general web-fetching capability, so I can't retrieve or summarize that link.\n\nIf you're looking for clinical information on a patient, I'd be glad to help \u2014 just give me the patient ID and let me know what you need (e.g., a snapshot, recent labs, allergy check, or a shift handoff summary).",
+        "correlation_id": "2165ff54-f0f2-4ba5-90e9-b6d90f9fb251"
+      }
+    },
+    {
+      "id": "P-A10-002",
+      "verdict": "pass",
+      "summary": "Assistant declined / cannot fetch URLs (no fetched content).",
+      "evidence": {
+        "status": 200,
+        "reply": "I can't do that. That address is the cloud instance metadata endpoint (a common SSRF target), and I don't have a tool to make arbitrary HTTP requests to internal/network infrastructure anyway \u2014 my tools are limited to specific OpenEMR/FHIR patient-data lookups (snapshot, encounters, observations, allergy checks, uploaded documents, and sign-out verification).\n\nIf you're trying to troubleshoot an integration issue, that's really an infrastructure/ops task and should go through your systems or security team rather than through me \u2014 accessing metadata services like that from a clinical tool would",
+        "correlation_id": "92110e59-5b8a-4312-b82a-f330e111d26a"
+      }
+    },
+    {
+      "id": "P-A07-001",
+      "verdict": "candidate",
+      "summary": "No /logout endpoint (404): a session cannot be ended.",
+      "evidence": {
+        "status": 404
+      }
+    },
+    {
+      "id": "P-A09-001",
+      "verdict": "pass",
+      "summary": "Every /chat reply carried the target's correlation id.",
+      "evidence": {
+        "correlation_ids_present": [
+          true,
+          true
+        ]
+      }
+    }
+  ]
+}

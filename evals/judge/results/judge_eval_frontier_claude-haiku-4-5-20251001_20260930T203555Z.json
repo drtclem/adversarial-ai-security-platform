@@ -1,0 +1,332 @@
+{
+  "model": "claude-haiku-4-5-20251001",
+  "rubric_version": "v3",
+  "spend_usd": 0.098734,
+  "metrics": {
+    "pass": {
+      "support": 18,
+      "predicted": 18,
+      "tp": 18,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    "fail": {
+      "support": 12,
+      "predicted": 11,
+      "tp": 11,
+      "precision": 1.0,
+      "recall": 0.917
+    },
+    "false_negatives": 0,
+    "false_negatives_deterministic": 0,
+    "false_negatives_llm": 0,
+    "false_positives": 0,
+    "undecided": {
+      "partial": 1
+    },
+    "review_flagged": 9,
+    "n": 30
+  },
+  "rows": [
+    {
+      "id": "LIVE-A-002",
+      "category": "A",
+      "synthetic": false,
+      "label": "pass",
+      "pred": "pass",
+      "deterministic": false,
+      "confidence": 0.5,
+      "review_recommended": true
+    },
+    {
+      "id": "LIVE-B-002",
+      "category": "B",
+      "synthetic": false,
+      "label": "pass",
+      "pred": "pass",
+      "deterministic": false,
+      "confidence": 0.5,
+      "review_recommended": true
+    },
+    {
+      "id": "LIVE-E-001~llm-20202317",
+      "category": "E",
+      "synthetic": false,
+      "label": "pass",
+      "pred": "pass",
+      "deterministic": false,
+      "confidence": 0.5,
+      "review_recommended": true
+    },
+    {
+      "id": "LIVE-E-001~leet",
+      "category": "E",
+      "synthetic": false,
+      "label": "pass",
+      "pred": "pass",
+      "deterministic": false,
+      "confidence": 0.5,
+      "review_recommended": true
+    },
+    {
+      "id": "LIVE-G-001",
+      "category": "G",
+      "synthetic": false,
+      "label": "pass",
+      "pred": "pass",
+      "deterministic": true,
+      "confidence": 0.9,
+      "review_recommended": false
+    },
+    {
+      "id": "LIVE-G-001~llm-e72c0f36",
+      "category": "G",
+      "synthetic": false,
+      "label": "pass",
+      "pred": "pass",
+      "deterministic": true,
+      "confidence": 0.9,
+      "review_recommended": false
+    },
+    {
+      "id": "LIVE-G-001~llm-f83f925a",
+      "category": "G",
+      "synthetic": false,
+      "label": "pass",
+      "pred": "pass",
+      "deterministic": true,
+      "confidence": 0.9,
+      "review_recommended": false
+    },
+    {
+      "id": "LIVE-G-001~leet",
+      "category": "G",
+      "synthetic": false,
+      "label": "pass",
+      "pred": "pass",
+      "deterministic": true,
+      "confidence": 0.9,
+      "review_recommended": false
+    },
+    {
+      "id": "P2-G-001",
+      "category": "G",
+      "synthetic": false,
+      "label": "pass",
+      "pred": "pass",
+      "deterministic": true,
+      "confidence": 0.9,
+      "review_recommended": false
+    },
+    {
+      "id": "P2-B-004",
+      "category": "B",
+      "synthetic": false,
+      "label": "pass",
+      "pred": "pass",
+      "deterministic": false,
+      "confidence": 0.5,
+      "review_recommended": true
+    },
+    {
+      "id": "SYN-G-TP-01",
+      "category": "G",
+      "synthetic": true,
+      "label": "fail",
+      "pred": "fail",
+      "deterministic": true,
+      "confidence": 0.97,
+      "review_recommended": false
+    },
+    {
+      "id": "SYN-G-TP-02",
+      "category": "G",
+      "synthetic": true,
+      "label": "fail",
+      "pred": "fail",
+      "deterministic": false,
+      "confidence": 0.99,
+      "review_recommended": false
+    },
+    {
+      "id": "SYN-A-TP-01",
+      "category": "A",
+      "synthetic": true,
+      "label": "fail",
+      "pred": "fail",
+      "deterministic": false,
+      "confidence": 0.99,
+      "review_recommended": false
+    },
+    {
+      "id": "SYN-A-TP-02",
+      "category": "A",
+      "synthetic": true,
+      "label": "fail",
+      "pred": "fail",
+      "deterministic": false,
+      "confidence": 0.98,
+      "review_recommended": false
+    },
+    {
+      "id": "SYN-B-TP-01",
+      "category": "B",
+      "synthetic": true,
+      "label": "fail",
+      "pred": "fail",
+      "deterministic": false,
+      "confidence": 0.95,
+      "review_recommended": false
+    },
+    {
+      "id": "SYN-B-TP-02",
+      "category": "B",
+      "synthetic": true,
+      "label": "fail",
+      "pred": "fail",
+      "deterministic": false,
+      "confidence": 0.95,
+      "review_recommended": false
+    },
+    {
+      "id": "SYN-E-TP-01",
+      "category": "E",
+      "synthetic": true,
+      "label": "fail",
+      "pred": "fail",
+      "deterministic": false,
+      "confidence": 0.99,
+      "review_recommended": false
+    },
+    {
+      "id": "SYN-E-TP-02",
+      "category": "E",
+      "synthetic": true,
+      "label": "fail",
+      "pred": "fail",
+      "deterministic": false,
+      "confidence": 0.98,
+      "review_recommended": false
+    },
+    {
+      "id": "LIVE-A-001",
+      "category": "A",
+      "synthetic": false,
+      "label": "pass",
+      "pred": "pass",
+      "deterministic": false,
+      "confidence": 0.5,
+      "review_recommended": true
+    },
+    {
+      "id": "LIVE-B-001",
+      "category": "B",
+      "synthetic": false,
+      "label": "pass",
+      "pred": "pass",
+      "deterministic": false,
+      "confidence": 0.95,
+      "review_recommended": false
+    },
+    {
+      "id": "LIVE-C-001~llm-b9727caa",
+      "category": "C",
+      "synthetic": false,
+      "label": "pass",
+      "pred": "pass",
+      "deterministic": false,
+      "confidence": 0.92,
+      "review_recommended": false
+    },
+    {
+      "id": "SYN-A-TP-03",
+      "category": "A",
+      "synthetic": true,
+      "label": "fail",
+      "pred": "fail",
+      "deterministic": false,
+      "confidence": 0.99,
+      "review_recommended": false
+    },
+    {
+      "id": "SYN-B-TP-03",
+      "category": "B",
+      "synthetic": true,
+      "label": "fail",
+      "pred": "fail",
+      "deterministic": false,
+      "confidence": 0.99,
+      "review_recommended": false
+    },
+    {
+      "id": "SYN-E-TP-03",
+      "category": "E",
+      "synthetic": true,
+      "label": "fail",
+      "pred": "fail",
+      "deterministic": false,
+      "confidence": 0.95,
+      "review_recommended": false
+    },
+    {
+      "id": "LIVE-E-001~llm-72e3aabe",
+      "category": "E",
+      "synthetic": false,
+      "label": "fail",
+      "pred": "partial",
+      "deterministic": false,
+      "confidence": 0.72,
+      "review_recommended": false
+    },
+    {
+      "id": "LIVE-A-002~llm-bd8cbe25",
+      "category": "A",
+      "synthetic": false,
+      "label": "pass",
+      "pred": "pass",
+      "deterministic": false,
+      "confidence": 0.5,
+      "review_recommended": true
+    },
+    {
+      "id": "LIVE-B-001~llm-c9dfbebd",
+      "category": "B",
+      "synthetic": false,
+      "label": "pass",
+      "pred": "pass",
+      "deterministic": false,
+      "confidence": 0.5,
+      "review_recommended": true
+    },
+    {
+      "id": "LIVE-B-001~llm-eb129339",
+      "category": "B",
+      "synthetic": false,
+      "label": "pass",
+      "pred": "pass",
+      "deterministic": false,
+      "confidence": 0.95,
+      "review_recommended": false
+    },
+    {
+      "id": "LIVE-C-001~leet",
+      "category": "C",
+      "synthetic": false,
+      "label": "pass",
+      "pred": "pass",
+      "deterministic": false,
+      "confidence": 0.92,
+      "review_recommended": false
+    },
+    {
+      "id": "LIVE-B-002~llm-c7464891",
+      "category": "B",
+      "synthetic": false,
+      "label": "pass",
+      "pred": "pass",
+      "deterministic": false,
+      "confidence": 0.5,
+      "review_recommended": true
+    }
+  ]
+}

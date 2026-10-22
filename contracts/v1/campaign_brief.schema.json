@@ -1,0 +1,77 @@
+{
+  "$defs": {
+    "AttackCategory": {
+      "description": "Our seed taxonomy (spec \u00a75). Ship >=3 (A,B,C); aim for all 7.",
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "title": "AttackCategory",
+      "type": "string"
+    }
+  },
+  "$id": "contracts/v1/campaign_brief.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Orchestrator \u2192 Red Team (spec \u00a78).",
+  "properties": {
+    "budget_usd": {
+      "default": 0.0,
+      "title": "Budget Usd",
+      "type": "number"
+    },
+    "category": {
+      "$ref": "#/$defs/AttackCategory"
+    },
+    "correlation_id": {
+      "title": "Correlation Id",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "is_regression_run": {
+      "default": false,
+      "title": "Is Regression Run",
+      "type": "boolean"
+    },
+    "max_attacks": {
+      "default": 8,
+      "title": "Max Attacks",
+      "type": "integer"
+    },
+    "rationale": {
+      "default": "",
+      "title": "Rationale",
+      "type": "string"
+    },
+    "seed_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Seed Ids",
+      "type": "array"
+    },
+    "stop_conditions": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Stop Conditions",
+      "type": "array"
+    }
+  },
+  "required": [
+    "category"
+  ],
+  "title": "CampaignBrief",
+  "type": "object",
+  "x-consumer": "Red Team",
+  "x-contract-version": "v1",
+  "x-producer": "Orchestrator"
+}

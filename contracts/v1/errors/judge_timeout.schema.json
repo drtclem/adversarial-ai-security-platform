@@ -1,0 +1,69 @@
+{
+  "$defs": {
+    "AgentRole": {
+      "enum": [
+        "orchestrator",
+        "redteam",
+        "judge",
+        "documentation"
+      ],
+      "title": "AgentRole",
+      "type": "string"
+    },
+    "ErrorType": {
+      "description": "Typed error contracts (spec \u00a78). Each degrades gracefully; none is a pass.",
+      "enum": [
+        "target_unreachable",
+        "budget_exceeded",
+        "judge_timeout",
+        "no_findings",
+        "regression_detected",
+        "model_refused",
+        "local_model_unavailable"
+      ],
+      "title": "ErrorType",
+      "type": "string"
+    }
+  },
+  "$id": "contracts/v1/errors/judge_timeout.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Typed error 'judge_timeout'. Never scored as a pass (R11).",
+  "properties": {
+    "agent": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/AgentRole"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "correlation_id": {
+      "title": "Correlation Id",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "message": {
+      "default": "",
+      "title": "Message",
+      "type": "string"
+    },
+    "type": {
+      "const": "judge_timeout"
+    }
+  },
+  "required": [
+    "type"
+  ],
+  "title": "PlatformError[judge_timeout]",
+  "type": "object",
+  "x-consumer": "any agent, event store",
+  "x-contract-version": "v1",
+  "x-producer": "any agent"
+}

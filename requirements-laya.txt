@@ -1,0 +1,6 @@
+# Optional: calibrated-classifier tier (Laya) for the Judge — SHADOW MODE only.
+# Not needed for the core platform or the offline test suite.
+#   pip install -r requirements-laya.txt
+# First use downloads ~850 MB of weights (convaiinnovations/laya, Apache-2.0) into the
+# Hugging Face cache (~/.cache/huggingface). Runs locally (mps on Apple Silicon), $0.
+laya==0.3.22             # pulls torch>=2.0, transformers>=4.48, safetensors, huggingface_hub, numpy

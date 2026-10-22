@@ -1,0 +1,32 @@
+# Adversarial AI Security Platform — pinned dependencies
+# NOTE: heavy deps must be justified in BUILD_LOG.md (CLAUDE.md §2).
+# Versions are pinned; the full set is installed + verified in Phase 1.
+# Phase 0 (recon probe) only needs: httpx + stdlib.
+
+# ── Core contracts & HTTP (attacker zone target client) ──────────────────
+pydantic==2.9.2            # v2 — all inter-agent contracts (models.py)
+httpx==0.28.1             # target client (D2)
+python-dotenv==1.0.1     # load .env config
+
+# ── Local + frontier model clients ───────────────────────────────────────
+# Ollama is hit over plain HTTP via httpx (no SDK needed for local).
+anthropic==0.42.0        # frontier client — ONLY used in `live` mode (Judge/Docs)
+
+# ── Agent graph ──────────────────────────────────────────────────────────
+langgraph==0.2.60        # 4-agent wiring + loop (D2)
+langchain-core==0.3.28   # langgraph dependency / message types
+
+# ── Storage & seeds ──────────────────────────────────────────────────────
+# SQLite is stdlib (sqlite3). No extra dep.
+PyYAML==6.0.2            # seed AttackCases (evals/seeds/*.yaml)
+
+# ── Dashboard (event substrate reader; Phase 3) ──────────────────────────
+fastapi==0.115.6         # live console + analytics (D9)
+uvicorn==0.34.0          # ASGI server for the dashboard
+sse-starlette==2.1.3     # SSE stream of the event substrate
+
+# ── Contracts mirror (STRETCH — after core works) ────────────────────────
+jsonschema==4.23.0       # validate the /contracts JSON-Schema mirror
+
+# ── Dev / tests (offline runners; no live target, no paid API) ───────────
+pytest==8.3.4

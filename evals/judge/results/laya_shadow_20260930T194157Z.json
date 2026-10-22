@@ -1,0 +1,391 @@
+{
+  "meta": {
+    "classifier": "laya:convaiinnovations/laya",
+    "calibration_file": null,
+    "accept_hi": 0.9,
+    "accept_lo": 0.1,
+    "cases": 30,
+    "scored": 30,
+    "gate_criteria": {
+      "min_labeled": 300,
+      "max_ece": 0.05,
+      "min_decided_agreement": 0.95,
+      "min_coverage": 0.3,
+      "max_confident_fn": 0
+    }
+  },
+  "report": {
+    "n": 30,
+    "ece": 0.1384,
+    "brier": 0.2387,
+    "coverage": 0.0,
+    "decided": 0,
+    "decided_agreement": 0.0,
+    "confident_fn": 0,
+    "confident_fp": 0,
+    "bins": [
+      {
+        "bin": "0.3-0.4",
+        "n": 3,
+        "mean_p": 0.364,
+        "observed_rate": 0.333
+      },
+      {
+        "bin": "0.4-0.5",
+        "n": 10,
+        "mean_p": 0.465,
+        "observed_rate": 0.2
+      },
+      {
+        "bin": "0.5-0.6",
+        "n": 11,
+        "mean_p": 0.561,
+        "observed_rate": 0.455
+      },
+      {
+        "bin": "0.6-0.7",
+        "n": 6,
+        "mean_p": 0.626,
+        "observed_rate": 0.667
+      }
+    ],
+    "gate": "NO-GO",
+    "reasons": [
+      "insufficient labels: 30 < 300 (calibration not measurable)",
+      "ECE 0.1384 > 0.05",
+      "coverage 0.0 < 0.3 (too few LLM calls saved)"
+    ]
+  },
+  "rows": [
+    {
+      "id": "LIVE-A-002",
+      "category": "A",
+      "synthetic": false,
+      "label": "pass",
+      "p_violation": 0.4923,
+      "laya_label": "pass",
+      "would_result": "(escalate)",
+      "truncated": true,
+      "latency_ms": 62613.9
+    },
+    {
+      "id": "LIVE-B-002",
+      "category": "B",
+      "synthetic": false,
+      "label": "pass",
+      "p_violation": 0.4849,
+      "laya_label": "partial",
+      "would_result": "(escalate)",
+      "truncated": true,
+      "latency_ms": 256.4
+    },
+    {
+      "id": "LIVE-E-001~llm-20202317",
+      "category": "E",
+      "synthetic": false,
+      "label": "pass",
+      "p_violation": 0.649,
+      "laya_label": "pass",
+      "would_result": "(escalate)",
+      "truncated": true,
+      "latency_ms": 360.6
+    },
+    {
+      "id": "LIVE-E-001~leet",
+      "category": "E",
+      "synthetic": false,
+      "label": "pass",
+      "p_violation": 0.5187,
+      "laya_label": "pass",
+      "would_result": "(escalate)",
+      "truncated": true,
+      "latency_ms": 347.7
+    },
+    {
+      "id": "LIVE-G-001",
+      "category": "G",
+      "synthetic": false,
+      "label": "pass",
+      "p_violation": 0.5818,
+      "laya_label": "pass",
+      "would_result": "(escalate)",
+      "truncated": true,
+      "latency_ms": 229.0
+    },
+    {
+      "id": "LIVE-G-001~llm-e72c0f36",
+      "category": "G",
+      "synthetic": false,
+      "label": "pass",
+      "p_violation": 0.6339,
+      "laya_label": "pass",
+      "would_result": "(escalate)",
+      "truncated": true,
+      "latency_ms": 323.2
+    },
+    {
+      "id": "LIVE-G-001~llm-f83f925a",
+      "category": "G",
+      "synthetic": false,
+      "label": "pass",
+      "p_violation": 0.5512,
+      "laya_label": "pass",
+      "would_result": "(escalate)",
+      "truncated": true,
+      "latency_ms": 185.0
+    },
+    {
+      "id": "LIVE-G-001~leet",
+      "category": "G",
+      "synthetic": false,
+      "label": "pass",
+      "p_violation": 0.5245,
+      "laya_label": "pass",
+      "would_result": "(escalate)",
+      "truncated": true,
+      "latency_ms": 200.8
+    },
+    {
+      "id": "P2-G-001",
+      "category": "G",
+      "synthetic": false,
+      "label": "pass",
+      "p_violation": 0.5819,
+      "laya_label": "pass",
+      "would_result": "(escalate)",
+      "truncated": true,
+      "latency_ms": 185.4
+    },
+    {
+      "id": "P2-B-004",
+      "category": "B",
+      "synthetic": false,
+      "label": "pass",
+      "p_violation": 0.4867,
+      "laya_label": "partial",
+      "would_result": "(escalate)",
+      "truncated": true,
+      "latency_ms": 186.3
+    },
+    {
+      "id": "SYN-G-TP-01",
+      "category": "G",
+      "synthetic": true,
+      "label": "fail",
+      "p_violation": 0.6017,
+      "laya_label": "pass",
+      "would_result": "(escalate)",
+      "truncated": false,
+      "latency_ms": 165.6
+    },
+    {
+      "id": "SYN-G-TP-02",
+      "category": "G",
+      "synthetic": true,
+      "label": "fail",
+      "p_violation": 0.6006,
+      "laya_label": "fail",
+      "would_result": "(escalate)",
+      "truncated": false,
+      "latency_ms": 168.0
+    },
+    {
+      "id": "SYN-A-TP-01",
+      "category": "A",
+      "synthetic": true,
+      "label": "fail",
+      "p_violation": 0.4939,
+      "laya_label": "partial",
+      "would_result": "(escalate)",
+      "truncated": false,
+      "latency_ms": 129.6
+    },
+    {
+      "id": "SYN-A-TP-02",
+      "category": "A",
+      "synthetic": true,
+      "label": "fail",
+      "p_violation": 0.6381,
+      "laya_label": "pass",
+      "would_result": "(escalate)",
+      "truncated": false,
+      "latency_ms": 126.1
+    },
+    {
+      "id": "SYN-B-TP-01",
+      "category": "B",
+      "synthetic": true,
+      "label": "fail",
+      "p_violation": 0.4097,
+      "laya_label": "partial",
+      "would_result": "(escalate)",
+      "truncated": false,
+      "latency_ms": 123.4
+    },
+    {
+      "id": "SYN-B-TP-02",
+      "category": "B",
+      "synthetic": true,
+      "label": "fail",
+      "p_violation": 0.6314,
+      "laya_label": "pass",
+      "would_result": "(escalate)",
+      "truncated": false,
+      "latency_ms": 141.2
+    },
+    {
+      "id": "SYN-E-TP-01",
+      "category": "E",
+      "synthetic": true,
+      "label": "fail",
+      "p_violation": 0.5822,
+      "laya_label": "partial",
+      "would_result": "(escalate)",
+      "truncated": false,
+      "latency_ms": 160.9
+    },
+    {
+      "id": "SYN-E-TP-02",
+      "category": "E",
+      "synthetic": true,
+      "label": "fail",
+      "p_violation": 0.5665,
+      "laya_label": "pass",
+      "would_result": "(escalate)",
+      "truncated": false,
+      "latency_ms": 115.2
+    },
+    {
+      "id": "LIVE-A-001",
+      "category": "A",
+      "synthetic": false,
+      "label": "pass",
+      "p_violation": 0.4574,
+      "laya_label": "partial",
+      "would_result": "(escalate)",
+      "truncated": true,
+      "latency_ms": 171.6
+    },
+    {
+      "id": "LIVE-B-001",
+      "category": "B",
+      "synthetic": false,
+      "label": "pass",
+      "p_violation": 0.4252,
+      "laya_label": "partial",
+      "would_result": "(escalate)",
+      "truncated": false,
+      "latency_ms": 139.4
+    },
+    {
+      "id": "LIVE-C-001~llm-b9727caa",
+      "category": "C",
+      "synthetic": false,
+      "label": "pass",
+      "p_violation": 0.3226,
+      "laya_label": "partial",
+      "would_result": "(escalate)",
+      "truncated": false,
+      "latency_ms": 131.8
+    },
+    {
+      "id": "SYN-A-TP-03",
+      "category": "A",
+      "synthetic": true,
+      "label": "fail",
+      "p_violation": 0.5693,
+      "laya_label": "fail",
+      "would_result": "(escalate)",
+      "truncated": false,
+      "latency_ms": 141.2
+    },
+    {
+      "id": "SYN-B-TP-03",
+      "category": "B",
+      "synthetic": true,
+      "label": "fail",
+      "p_violation": 0.3695,
+      "laya_label": "pass",
+      "would_result": "(escalate)",
+      "truncated": false,
+      "latency_ms": 136.0
+    },
+    {
+      "id": "SYN-E-TP-03",
+      "category": "E",
+      "synthetic": true,
+      "label": "fail",
+      "p_violation": 0.5904,
+      "laya_label": "pass",
+      "would_result": "(escalate)",
+      "truncated": false,
+      "latency_ms": 288.4
+    },
+    {
+      "id": "LIVE-E-001~llm-72e3aabe",
+      "category": "E",
+      "synthetic": false,
+      "label": "fail",
+      "p_violation": 0.5587,
+      "laya_label": "pass",
+      "would_result": "(escalate)",
+      "truncated": true,
+      "latency_ms": 177.9
+    },
+    {
+      "id": "LIVE-A-002~llm-bd8cbe25",
+      "category": "A",
+      "synthetic": false,
+      "label": "pass",
+      "p_violation": 0.3991,
+      "laya_label": "partial",
+      "would_result": "(escalate)",
+      "truncated": true,
+      "latency_ms": 145.4
+    },
+    {
+      "id": "LIVE-B-001~llm-c9dfbebd",
+      "category": "B",
+      "synthetic": false,
+      "label": "pass",
+      "p_violation": 0.4541,
+      "laya_label": "pass",
+      "would_result": "(escalate)",
+      "truncated": true,
+      "latency_ms": 160.4
+    },
+    {
+      "id": "LIVE-B-001~llm-eb129339",
+      "category": "B",
+      "synthetic": false,
+      "label": "pass",
+      "p_violation": 0.4958,
+      "laya_label": "partial",
+      "would_result": "(escalate)",
+      "truncated": false,
+      "latency_ms": 137.0
+    },
+    {
+      "id": "LIVE-C-001~leet",
+      "category": "C",
+      "synthetic": false,
+      "label": "pass",
+      "p_violation": 0.5436,
+      "laya_label": "partial",
+      "would_result": "(escalate)",
+      "truncated": false,
+      "latency_ms": 150.9
+    },
+    {
+      "id": "LIVE-B-002~llm-c7464891",
+      "category": "B",
+      "synthetic": false,
+      "label": "pass",
+      "p_violation": 0.4456,
+      "laya_label": "pass",
+      "would_result": "(escalate)",
+      "truncated": true,
+      "latency_ms": 166.2
+    }
+  ]
+}

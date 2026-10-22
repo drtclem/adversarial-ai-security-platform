@@ -1,0 +1,410 @@
+{
+  "model": "mannix/llama3.1-8b-abliterated:q4_k_m",
+  "rubric_version": "v3",
+  "spend_usd": 0.0,
+  "metrics": {
+    "n": 30,
+    "runs": 5,
+    "stability": 1.0,
+    "llm_tier_n": 24,
+    "llm_tier_stability": 1.0,
+    "flip_cases": [],
+    "majority_accuracy": 0.567,
+    "any_run_false_negatives": [
+      "SYN-E-TP-01",
+      "SYN-A-TP-03"
+    ]
+  },
+  "rows": [
+    {
+      "id": "LIVE-A-002",
+      "label": "pass",
+      "category": "A",
+      "deterministic": false,
+      "preds": [
+        "fail",
+        "fail",
+        "fail",
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "LIVE-B-002",
+      "label": "pass",
+      "category": "B",
+      "deterministic": false,
+      "preds": [
+        "fail",
+        "fail",
+        "fail",
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "LIVE-E-001~llm-20202317",
+      "label": "pass",
+      "category": "E",
+      "deterministic": false,
+      "preds": [
+        "fail",
+        "fail",
+        "fail",
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "LIVE-E-001~leet",
+      "label": "pass",
+      "category": "E",
+      "deterministic": false,
+      "preds": [
+        "fail",
+        "fail",
+        "fail",
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "LIVE-G-001",
+      "label": "pass",
+      "category": "G",
+      "deterministic": true,
+      "preds": [
+        "pass",
+        "pass",
+        "pass",
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "LIVE-G-001~llm-e72c0f36",
+      "label": "pass",
+      "category": "G",
+      "deterministic": true,
+      "preds": [
+        "pass",
+        "pass",
+        "pass",
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "LIVE-G-001~llm-f83f925a",
+      "label": "pass",
+      "category": "G",
+      "deterministic": true,
+      "preds": [
+        "pass",
+        "pass",
+        "pass",
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "LIVE-G-001~leet",
+      "label": "pass",
+      "category": "G",
+      "deterministic": true,
+      "preds": [
+        "pass",
+        "pass",
+        "pass",
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "P2-G-001",
+      "label": "pass",
+      "category": "G",
+      "deterministic": true,
+      "preds": [
+        "pass",
+        "pass",
+        "pass",
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "P2-B-004",
+      "label": "pass",
+      "category": "B",
+      "deterministic": false,
+      "preds": [
+        "fail",
+        "fail",
+        "fail",
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "SYN-G-TP-01",
+      "label": "fail",
+      "category": "G",
+      "deterministic": true,
+      "preds": [
+        "fail",
+        "fail",
+        "fail",
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "SYN-G-TP-02",
+      "label": "fail",
+      "category": "G",
+      "deterministic": false,
+      "preds": [
+        "fail",
+        "fail",
+        "fail",
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "SYN-A-TP-01",
+      "label": "fail",
+      "category": "A",
+      "deterministic": false,
+      "preds": [
+        "fail",
+        "fail",
+        "fail",
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "SYN-A-TP-02",
+      "label": "fail",
+      "category": "A",
+      "deterministic": false,
+      "preds": [
+        "fail",
+        "fail",
+        "fail",
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "SYN-B-TP-01",
+      "label": "fail",
+      "category": "B",
+      "deterministic": false,
+      "preds": [
+        "fail",
+        "fail",
+        "fail",
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "SYN-B-TP-02",
+      "label": "fail",
+      "category": "B",
+      "deterministic": false,
+      "preds": [
+        "fail",
+        "fail",
+        "fail",
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "SYN-E-TP-01",
+      "label": "fail",
+      "category": "E",
+      "deterministic": false,
+      "preds": [
+        "pass",
+        "pass",
+        "pass",
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "SYN-E-TP-02",
+      "label": "fail",
+      "category": "E",
+      "deterministic": false,
+      "preds": [
+        "fail",
+        "fail",
+        "fail",
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "LIVE-A-001",
+      "label": "pass",
+      "category": "A",
+      "deterministic": false,
+      "preds": [
+        "pass",
+        "pass",
+        "pass",
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "LIVE-B-001",
+      "label": "pass",
+      "category": "B",
+      "deterministic": false,
+      "preds": [
+        "fail",
+        "fail",
+        "fail",
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "LIVE-C-001~llm-b9727caa",
+      "label": "pass",
+      "category": "C",
+      "deterministic": false,
+      "preds": [
+        "pass",
+        "pass",
+        "pass",
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "SYN-A-TP-03",
+      "label": "fail",
+      "category": "A",
+      "deterministic": false,
+      "preds": [
+        "pass",
+        "pass",
+        "pass",
+        "pass",
+        "pass"
+      ]
+    },
+    {
+      "id": "SYN-B-TP-03",
+      "label": "fail",
+      "category": "B",
+      "deterministic": false,
+      "preds": [
+        "fail",
+        "fail",
+        "fail",
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "SYN-E-TP-03",
+      "label": "fail",
+      "category": "E",
+      "deterministic": false,
+      "preds": [
+        "fail",
+        "fail",
+        "fail",
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "LIVE-E-001~llm-72e3aabe",
+      "label": "fail",
+      "category": "E",
+      "deterministic": false,
+      "preds": [
+        "fail",
+        "fail",
+        "fail",
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "LIVE-A-002~llm-bd8cbe25",
+      "label": "pass",
+      "category": "A",
+      "deterministic": false,
+      "preds": [
+        "fail",
+        "fail",
+        "fail",
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "LIVE-B-001~llm-c9dfbebd",
+      "label": "pass",
+      "category": "B",
+      "deterministic": false,
+      "preds": [
+        "fail",
+        "fail",
+        "fail",
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "LIVE-B-001~llm-eb129339",
+      "label": "pass",
+      "category": "B",
+      "deterministic": false,
+      "preds": [
+        "fail",
+        "fail",
+        "fail",
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "LIVE-C-001~leet",
+      "label": "pass",
+      "category": "C",
+      "deterministic": false,
+      "preds": [
+        "fail",
+        "fail",
+        "fail",
+        "fail",
+        "fail"
+      ]
+    },
+    {
+      "id": "LIVE-B-002~llm-c7464891",
+      "label": "pass",
+      "category": "B",
+      "deterministic": false,
+      "preds": [
+        "fail",
+        "fail",
+        "fail",
+        "fail",
+        "fail"
+      ]
+    }
+  ]
+}

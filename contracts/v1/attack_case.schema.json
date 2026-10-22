@@ -1,0 +1,206 @@
+{
+  "$defs": {
+    "AttackCategory": {
+      "description": "Our seed taxonomy (spec \u00a75). Ship >=3 (A,B,C); aim for all 7.",
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "title": "AttackCategory",
+      "type": "string"
+    },
+    "Exploitability": {
+      "description": "How likely an attacker with only a clinician chat session lands this case,\ngiven its preconditions AND what we have observed against the live target.",
+      "enum": [
+        "low",
+        "medium",
+        "high",
+        "n/a"
+      ],
+      "title": "Exploitability",
+      "type": "string"
+    },
+    "OwaspLLM": {
+      "description": "OWASP Top 10 for LLM Applications (2025). Every case is tagged (D11).",
+      "enum": [
+        "LLM01",
+        "LLM02",
+        "LLM03",
+        "LLM04",
+        "LLM05",
+        "LLM06",
+        "LLM07",
+        "LLM08",
+        "LLM09",
+        "LLM10"
+      ],
+      "title": "OwaspLLM",
+      "type": "string"
+    },
+    "Severity": {
+      "enum": [
+        "info",
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "title": "Severity",
+      "type": "string"
+    }
+  },
+  "$id": "contracts/v1/attack_case.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "A seed or generated attack (spec \u00a75). Synthetic data only (R5).",
+  "properties": {
+    "add_to_regression": {
+      "default": false,
+      "title": "Add To Regression",
+      "type": "boolean"
+    },
+    "canaries": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Canaries",
+      "type": "array"
+    },
+    "category": {
+      "$ref": "#/$defs/AttackCategory"
+    },
+    "expected_safe_behavior": {
+      "title": "Expected Safe Behavior",
+      "type": "string"
+    },
+    "exploitability": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Exploitability"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "exploitability_note": {
+      "default": "",
+      "title": "Exploitability Note",
+      "type": "string"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "invariant": {
+      "title": "Invariant",
+      "type": "string"
+    },
+    "notes": {
+      "default": "",
+      "title": "Notes",
+      "type": "string"
+    },
+    "origin": {
+      "default": "seed",
+      "enum": [
+        "seed",
+        "generated",
+        "mutation"
+      ],
+      "title": "Origin",
+      "type": "string"
+    },
+    "owasp": {
+      "items": {
+        "$ref": "#/$defs/OwaspLLM"
+      },
+      "title": "Owasp",
+      "type": "array"
+    },
+    "owasp_web": {
+      "items": {
+        "enum": [
+          "A01",
+          "A02",
+          "A03",
+          "A04",
+          "A05",
+          "A06",
+          "A07",
+          "A08",
+          "A09",
+          "A10"
+        ],
+        "type": "string"
+      },
+      "title": "Owasp Web",
+      "type": "array"
+    },
+    "parent_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Parent Id"
+    },
+    "prompt_or_sequence": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Prompt Or Sequence",
+      "type": "array"
+    },
+    "severity": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Severity"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "subcategory": {
+      "default": "",
+      "title": "Subcategory",
+      "type": "string"
+    },
+    "test_design": {
+      "items": {
+        "enum": [
+          "boundary",
+          "invariant",
+          "regression"
+        ],
+        "type": "string"
+      },
+      "title": "Test Design",
+      "type": "array"
+    }
+  },
+  "required": [
+    "id",
+    "category",
+    "owasp",
+    "prompt_or_sequence",
+    "expected_safe_behavior",
+    "invariant"
+  ],
+  "title": "AttackCase",
+  "type": "object",
+  "x-consumer": "Red Team",
+  "x-contract-version": "v1",
+  "x-producer": "seed suite / Red Team mutator"
+}

@@ -1,0 +1,261 @@
+{
+  "$defs": {
+    "AgentRole": {
+      "enum": [
+        "orchestrator",
+        "redteam",
+        "judge",
+        "documentation"
+      ],
+      "title": "AgentRole",
+      "type": "string"
+    },
+    "ErrorType": {
+      "description": "Typed error contracts (spec \u00a78). Each degrades gracefully; none is a pass.",
+      "enum": [
+        "target_unreachable",
+        "budget_exceeded",
+        "judge_timeout",
+        "no_findings",
+        "regression_detected",
+        "model_refused",
+        "local_model_unavailable"
+      ],
+      "title": "ErrorType",
+      "type": "string"
+    },
+    "PlatformError": {
+      "description": "A typed error. Surfacing one is a distinct state \u2014 never scored as pass (R11).",
+      "properties": {
+        "agent": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AgentRole"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "correlation_id": {
+          "title": "Correlation Id",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "message": {
+          "default": "",
+          "title": "Message",
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/ErrorType"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "PlatformError",
+      "type": "object"
+    },
+    "ShadowOpinion": {
+      "description": "What the calibrated-classifier tier (Laya) WOULD have said, recorded next to\nthe real verdict. SHADOW MODE: it never changes `Verdict.result`. `would_decide`\nis whether it would have been confident enough to skip the LLM tier had it been\npromoted; promotion is gated on evals/judge/run_laya_shadow_eval.py.",
+      "properties": {
+        "agrees": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Agrees"
+        },
+        "classifier": {
+          "title": "Classifier",
+          "type": "string"
+        },
+        "error": {
+          "default": "",
+          "title": "Error",
+          "type": "string"
+        },
+        "label": {
+          "default": "",
+          "title": "Label",
+          "type": "string"
+        },
+        "label_probabilities": {
+          "additionalProperties": {
+            "type": "number"
+          },
+          "title": "Label Probabilities",
+          "type": "object"
+        },
+        "latency_ms": {
+          "default": 0.0,
+          "title": "Latency Ms",
+          "type": "number"
+        },
+        "p_violation": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "P Violation"
+        },
+        "truncated": {
+          "default": false,
+          "title": "Truncated",
+          "type": "boolean"
+        },
+        "would_decide": {
+          "default": false,
+          "title": "Would Decide",
+          "type": "boolean"
+        },
+        "would_result": {
+          "default": "",
+          "title": "Would Result",
+          "type": "string"
+        }
+      },
+      "required": [
+        "classifier"
+      ],
+      "title": "ShadowOpinion",
+      "type": "object"
+    },
+    "VerdictResult": {
+      "enum": [
+        "pass",
+        "fail",
+        "partial",
+        "error"
+      ],
+      "title": "VerdictResult",
+      "type": "string"
+    }
+  },
+  "$id": "contracts/v1/verdict.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "The Judge's output. `deterministic=True` means the pre-filter decided it\nwithout any LLM call (the cost saver, CLAUDE.md \u00a70.3).",
+  "properties": {
+    "confidence": {
+      "default": 0.0,
+      "maximum": 1.0,
+      "minimum": 0.0,
+      "title": "Confidence",
+      "type": "number"
+    },
+    "correlation_id": {
+      "title": "Correlation Id",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "deterministic": {
+      "default": false,
+      "title": "Deterministic",
+      "type": "boolean"
+    },
+    "error": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PlatformError"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "escalated": {
+      "default": false,
+      "title": "Escalated",
+      "type": "boolean"
+    },
+    "evidence_pointer": {
+      "default": "",
+      "title": "Evidence Pointer",
+      "type": "string"
+    },
+    "invariant_violated": {
+      "title": "Invariant Violated",
+      "type": "boolean"
+    },
+    "judge_model": {
+      "default": "",
+      "title": "Judge Model",
+      "type": "string"
+    },
+    "rationale": {
+      "default": "",
+      "title": "Rationale",
+      "type": "string"
+    },
+    "result": {
+      "$ref": "#/$defs/VerdictResult"
+    },
+    "review_reason": {
+      "default": "",
+      "title": "Review Reason",
+      "type": "string"
+    },
+    "review_recommended": {
+      "default": false,
+      "title": "Review Recommended",
+      "type": "boolean"
+    },
+    "rubric_version": {
+      "default": "",
+      "title": "Rubric Version",
+      "type": "string"
+    },
+    "shadow": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/ShadowOpinion"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "transcript_id": {
+      "title": "Transcript Id",
+      "type": "string"
+    },
+    "which_control_failed": {
+      "default": "",
+      "title": "Which Control Failed",
+      "type": "string"
+    }
+  },
+  "required": [
+    "transcript_id",
+    "correlation_id",
+    "result",
+    "invariant_violated"
+  ],
+  "title": "Verdict",
+  "type": "object",
+  "x-consumer": "Documentation, regression harness, Orchestrator",
+  "x-contract-version": "v1",
+  "x-producer": "Judge"
+}

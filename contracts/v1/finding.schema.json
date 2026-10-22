@@ -1,0 +1,180 @@
+{
+  "$defs": {
+    "AttackCategory": {
+      "description": "Our seed taxonomy (spec \u00a75). Ship >=3 (A,B,C); aim for all 7.",
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "title": "AttackCategory",
+      "type": "string"
+    },
+    "FindingStatus": {
+      "enum": [
+        "open",
+        "in_progress",
+        "resolved",
+        "regressed",
+        "published"
+      ],
+      "title": "FindingStatus",
+      "type": "string"
+    },
+    "OwaspLLM": {
+      "description": "OWASP Top 10 for LLM Applications (2025). Every case is tagged (D11).",
+      "enum": [
+        "LLM01",
+        "LLM02",
+        "LLM03",
+        "LLM04",
+        "LLM05",
+        "LLM06",
+        "LLM07",
+        "LLM08",
+        "LLM09",
+        "LLM10"
+      ],
+      "title": "OwaspLLM",
+      "type": "string"
+    },
+    "Severity": {
+      "enum": [
+        "info",
+        "low",
+        "medium",
+        "high",
+        "critical"
+      ],
+      "title": "Severity",
+      "type": "string"
+    }
+  },
+  "$id": "contracts/v1/finding.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "Documentation agent output \u2192 exploit DB. `human_approved` gates\ncritical/published and is set ONLY by the deterministic gate (R8).",
+  "properties": {
+    "attack_category": {
+      "$ref": "#/$defs/AttackCategory"
+    },
+    "clinical_impact": {
+      "title": "Clinical Impact",
+      "type": "string"
+    },
+    "correlation_id": {
+      "title": "Correlation Id",
+      "type": "string"
+    },
+    "created_at": {
+      "format": "date-time",
+      "title": "Created At",
+      "type": "string"
+    },
+    "expected": {
+      "title": "Expected",
+      "type": "string"
+    },
+    "first_seen_version": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "First Seen Version"
+    },
+    "human_approved": {
+      "default": false,
+      "title": "Human Approved",
+      "type": "boolean"
+    },
+    "last_validated_version": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Last Validated Version"
+    },
+    "observed": {
+      "title": "Observed",
+      "type": "string"
+    },
+    "owasp": {
+      "items": {
+        "$ref": "#/$defs/OwaspLLM"
+      },
+      "title": "Owasp",
+      "type": "array"
+    },
+    "remediation": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Remediation",
+      "type": "array"
+    },
+    "repro_steps": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Repro Steps",
+      "type": "array"
+    },
+    "severity": {
+      "$ref": "#/$defs/Severity"
+    },
+    "status": {
+      "$ref": "#/$defs/FindingStatus",
+      "default": "open"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "transcript_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Transcript Id"
+    },
+    "vuln_id": {
+      "title": "Vuln Id",
+      "type": "string"
+    }
+  },
+  "required": [
+    "vuln_id",
+    "title",
+    "severity",
+    "owasp",
+    "attack_category",
+    "clinical_impact",
+    "repro_steps",
+    "observed",
+    "expected",
+    "remediation"
+  ],
+  "title": "Finding",
+  "type": "object",
+  "x-consumer": "exploit DB, D4 human-approval gate",
+  "x-contract-version": "v1",
+  "x-producer": "Documentation"
+}

@@ -1,0 +1,238 @@
+{
+  "$defs": {
+    "AgentRole": {
+      "enum": [
+        "orchestrator",
+        "redteam",
+        "judge",
+        "documentation"
+      ],
+      "title": "AgentRole",
+      "type": "string"
+    },
+    "AttackCategory": {
+      "description": "Our seed taxonomy (spec \u00a75). Ship >=3 (A,B,C); aim for all 7.",
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F",
+        "G"
+      ],
+      "title": "AttackCategory",
+      "type": "string"
+    },
+    "ErrorType": {
+      "description": "Typed error contracts (spec \u00a78). Each degrades gracefully; none is a pass.",
+      "enum": [
+        "target_unreachable",
+        "budget_exceeded",
+        "judge_timeout",
+        "no_findings",
+        "regression_detected",
+        "model_refused",
+        "local_model_unavailable"
+      ],
+      "title": "ErrorType",
+      "type": "string"
+    },
+    "OwaspLLM": {
+      "description": "OWASP Top 10 for LLM Applications (2025). Every case is tagged (D11).",
+      "enum": [
+        "LLM01",
+        "LLM02",
+        "LLM03",
+        "LLM04",
+        "LLM05",
+        "LLM06",
+        "LLM07",
+        "LLM08",
+        "LLM09",
+        "LLM10"
+      ],
+      "title": "OwaspLLM",
+      "type": "string"
+    },
+    "PlatformError": {
+      "description": "A typed error. Surfacing one is a distinct state \u2014 never scored as pass (R11).",
+      "properties": {
+        "agent": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AgentRole"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "correlation_id": {
+          "title": "Correlation Id",
+          "type": "string"
+        },
+        "created_at": {
+          "format": "date-time",
+          "title": "Created At",
+          "type": "string"
+        },
+        "message": {
+          "default": "",
+          "title": "Message",
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/$defs/ErrorType"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "PlatformError",
+      "type": "object"
+    },
+    "Turn": {
+      "description": "One turn in a (possibly multi-turn) exchange.",
+      "properties": {
+        "content": {
+          "title": "Content",
+          "type": "string"
+        },
+        "meta": {
+          "title": "Meta",
+          "type": "object"
+        },
+        "speaker": {
+          "enum": [
+            "attacker",
+            "target"
+          ],
+          "title": "Speaker",
+          "type": "string"
+        }
+      },
+      "required": [
+        "speaker",
+        "content"
+      ],
+      "title": "Turn",
+      "type": "object"
+    }
+  },
+  "$id": "contracts/v1/transcript.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "description": "The Red Team's output \u2192 the Judge's input. Independent of RT reasoning (R7).",
+  "properties": {
+    "case_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Case Id"
+    },
+    "category": {
+      "$ref": "#/$defs/AttackCategory"
+    },
+    "correlation_id": {
+      "title": "Correlation Id",
+      "type": "string"
+    },
+    "ended_at": {
+      "anyOf": [
+        {
+          "format": "date-time",
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Ended At"
+    },
+    "error": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/PlatformError"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null
+    },
+    "expected_safe_behavior": {
+      "title": "Expected Safe Behavior",
+      "type": "string"
+    },
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "invariant": {
+      "title": "Invariant",
+      "type": "string"
+    },
+    "owasp": {
+      "items": {
+        "$ref": "#/$defs/OwaspLLM"
+      },
+      "title": "Owasp",
+      "type": "array"
+    },
+    "started_at": {
+      "format": "date-time",
+      "title": "Started At",
+      "type": "string"
+    },
+    "target_correlation_id": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Target Correlation Id"
+    },
+    "target_version_marker": {
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Target Version Marker"
+    },
+    "turns": {
+      "items": {
+        "$ref": "#/$defs/Turn"
+      },
+      "title": "Turns",
+      "type": "array"
+    }
+  },
+  "required": [
+    "category",
+    "owasp",
+    "invariant",
+    "expected_safe_behavior"
+  ],
+  "title": "Transcript",
+  "type": "object",
+  "x-consumer": "Judge",
+  "x-contract-version": "v1",
+  "x-producer": "Red Team"
+}

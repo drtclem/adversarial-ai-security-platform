@@ -1,0 +1,64 @@
+{
+  "errors": [
+    "errors/target_unreachable.schema.json",
+    "errors/budget_exceeded.schema.json",
+    "errors/judge_timeout.schema.json",
+    "errors/no_findings.schema.json",
+    "errors/regression_detected.schema.json",
+    "errors/model_refused.schema.json",
+    "errors/local_model_unavailable.schema.json"
+  ],
+  "messages": [
+    {
+      "consumer": "Red Team",
+      "file": "campaign_brief.schema.json",
+      "name": "campaign_brief",
+      "producer": "Orchestrator"
+    },
+    {
+      "consumer": "Red Team",
+      "file": "attack_case.schema.json",
+      "name": "attack_case",
+      "producer": "seed suite / Red Team mutator"
+    },
+    {
+      "consumer": "Judge",
+      "file": "transcript.schema.json",
+      "name": "transcript",
+      "producer": "Red Team"
+    },
+    {
+      "consumer": "Documentation, regression harness, Orchestrator",
+      "file": "verdict.schema.json",
+      "name": "verdict",
+      "producer": "Judge"
+    },
+    {
+      "consumer": "exploit DB, D4 human-approval gate",
+      "file": "finding.schema.json",
+      "name": "finding",
+      "producer": "Documentation"
+    },
+    {
+      "consumer": "event store, Orchestrator, dashboard",
+      "file": "event.schema.json",
+      "name": "event",
+      "producer": "every agent"
+    },
+    {
+      "consumer": "any agent, event store",
+      "file": "platform_error.schema.json",
+      "name": "platform_error",
+      "producer": "any agent"
+    }
+  ],
+  "required_errors": [
+    "target_unreachable",
+    "budget_exceeded",
+    "judge_timeout",
+    "no_findings",
+    "regression_detected"
+  ],
+  "source_of_truth": "adv_platform/models.py (Pydantic v2)",
+  "version": "v1"
+}

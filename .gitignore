@@ -1,0 +1,39 @@
+# ── Secrets — NEVER commit ──────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+
+# ── Python ──────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+env/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ── Platform data (local DBs, event stores, run artifacts) ──────────────
+platform_data/
+*.db
+*.sqlite
+*.sqlite3
+
+# ── Node / dashboard build ──────────────────────────────────────────────
+node_modules/
+dashboard/dist/
+dashboard/node_modules/
+
+# ── Logs & scratch ──────────────────────────────────────────────────────
+*.log
+.DS_Store
+.idea/
+.vscode/
+
+# ── Claude Code — personal local settings (allow-rules etc.) ────────────
+.claude/settings.local.json
+platform_data/owasp_probe_session.json
